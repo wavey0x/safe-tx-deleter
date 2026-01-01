@@ -1,0 +1,160 @@
+.list {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+}
+
+.group {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--divider-subtle);
+}
+
+.group:last-child {
+  border-bottom: none;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--text-tertiary);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.card {
+  border: 1px solid var(--divider-subtle);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, background-color 0.15s ease;
+  width: 100%;
+}
+
+.card:last-child {
+  margin-bottom: 0;
+}
+
+.card:hover {
+  background-color: var(--hover-bg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cardRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.address {
+  word-break: break-all;
+  flex: 1;
+}
+
+.cardActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.sectionDivider {
+  border-top: 1px solid var(--divider-subtle);
+  margin-top: 16px;
+  padding-top: 24px;
+}
+
+.searchForm {
+  display: grid;
+  grid-template-columns: 160px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  width: min(720px, 100%);
+}
+
+.searchInput {
+  border: 1px solid var(--divider-strong);
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+}
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--divider-strong);
+  padding: 6px 28px 6px 10px;
+  border-radius: 6px;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  min-width: 120px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1.5l5 5 5-5' fill='none' stroke='%239A9A9A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--text-tertiary);
+}
+
+.select option {
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+.selectWrapper {
+  display: inline-block;
+}
+
+@media (max-width: 720px) {
+  .searchForm {
+    grid-template-columns: 1fr;
+  }
+
+  .cardRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+.error {
+  grid-column: 1 / -1;
+  color: var(--text-tertiary);
+}
+
+.loadButtonWrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.loadingWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.searchWrapper {
+  display: flex;
+  justify-content: center;
+}

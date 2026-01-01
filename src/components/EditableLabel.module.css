@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.text {
+  word-break: break-all;
+}
+
+.chainLogo {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.iconButton {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  padding: 2px;
+  cursor: pointer;
+  opacity: 0.35;
+  transition: opacity 0.15s ease;
+  color: inherit;
+  text-decoration: none;
+}
+
+.iconButton:hover {
+  opacity: 0.8;
+}
+
+.icon {
+  width: 12px;
+  height: 12px;
+  display: block;
+}
+
+.editContainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.input {
+  flex: 1;
+  min-width: 80px;
+  max-width: 200px;
+  border: 1px solid var(--divider-strong);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font: inherit;
+  font-size: 12px;
+  background: var(--surface);
+  color: inherit;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--text-tertiary);
+}
+
+.suffix {
+  color: var(--text-tertiary);
+  font-size: 11px;
+  white-space: nowrap;
+}

@@ -1,0 +1,80 @@
+.wrapper {
+  position: relative;
+}
+
+.button {
+  min-width: 140px;
+  text-align: center;
+  border-radius: 999px;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+}
+
+.modal {
+  width: 320px;
+  background: var(--surface);
+  border: 1px solid var(--divider-strong);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.modalTitle {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.close {
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  line-height: 1;
+  padding: 2px 6px;
+}
+
+.modalBody {
+  display: grid;
+  gap: 8px;
+}
+
+.action {
+  width: 100%;
+  border: 1px solid var(--divider-strong);
+  padding: 8px 10px;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.action:hover {
+  background: var(--hover-bg);
+}
+
+.address {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.pending {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.error {
+  color: var(--text-tertiary);
+  font-size: 12px;
+}

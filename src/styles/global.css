@@ -1,0 +1,122 @@
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --text-primary: #111111;
+  --text-secondary: #6a6a6a;
+  --text-tertiary: #9a9a9a;
+  --divider-strong: #cccccc;
+  --divider-subtle: #e6e7eb;
+  --hover-bg: rgba(0, 0, 0, 0.04);
+  --surface: #ffffff;
+  --badge-neutral-bg: #f5f5f5;
+  --badge-neutral-text: #666666;
+  --badge-eligible-bg: #d1f2df;
+  --badge-eligible-text: #1f6d46;
+  --badge-unknown-bg: #fbe9c8;
+  --badge-unknown-text: #8a5a10;
+  --shadow: 0 0 0 1px var(--divider-strong);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #1a1a1a;
+  --text-primary: #fafafa;
+  --text-secondary: #d8d8d8;
+  --text-tertiary: #a0a0a0;
+  --divider-strong: #404040;
+  --divider-subtle: #2a2a2a;
+  --hover-bg: rgba(255, 255, 255, 0.04);
+  --surface: #1a1a1a;
+  --badge-neutral-bg: #2a2a2a;
+  --badge-neutral-text: #b0b0b0;
+  --badge-eligible-bg: rgba(16, 116, 68, 0.35);
+  --badge-eligible-text: #b4f0cd;
+  --badge-unknown-bg: rgba(153, 96, 16, 0.35);
+  --badge-unknown-text: #f4d08a;
+  --shadow: 0 0 0 1px var(--divider-strong);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  background: var(--bg);
+  color: var(--text-primary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  border: 1px solid var(--divider-strong);
+  background: transparent;
+  color: inherit;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+main {
+  padding: 32px 24px 64px;
+}
+
+.container {
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+.section {
+  margin-top: 32px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.muted {
+  color: var(--text-secondary);
+}
+
+.subtle {
+  color: var(--text-tertiary);
+}
+
+.divider {
+  border-bottom: 1px solid var(--divider-subtle);
+}
+
+.dividerStrong {
+  border-bottom: 1px solid var(--divider-strong);
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}

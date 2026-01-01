@@ -1,0 +1,16 @@
+.button {
+  border: none;
+  background: transparent;
+  padding: 4px;
+  line-height: 0;
+}
+
+.button:hover {
+  background: var(--hover-bg);
+  border-radius: 999px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
