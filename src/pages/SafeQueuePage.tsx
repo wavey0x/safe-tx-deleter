@@ -28,9 +28,9 @@ const PAGE_SIZE = 20;
 
 const LOADING_MESSAGES = [
   "Loading queue...",
+  "Rate limits may slow things down...",
   "Fetching transactions...",
   "This may take a moment...",
-  "Checking for queued items...",
 ];
 
 const CyclingText = () => {
@@ -291,14 +291,22 @@ const SafeQueuePage = () => {
                         Delete
                       </button>
                     ) : (
-                      <button
-                        type="button"
-                        disabled
-                        title="Connected wallet is not the proposer, thus cannot delete."
-                        className={`${styles.linkButton} ${styles.deleteButton} ${styles.deleteButtonDisabled}`}
+                      <span
+                        className={styles.tooltipWrapper}
+                        data-tooltip={
+                          eligibility === "unknown"
+                            ? "Proposer unknown. Only the original proposer can delete."
+                            : "Only the original proposer can delete this transaction."
+                        }
                       >
-                        Delete
-                      </button>
+                        <button
+                          type="button"
+                          disabled
+                          className={`${styles.linkButton} ${styles.deleteButton} ${styles.deleteButtonDisabled}`}
+                        >
+                          Delete
+                        </button>
+                      </span>
                     )}
                   </div>
                 </span>

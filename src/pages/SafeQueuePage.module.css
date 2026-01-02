@@ -60,6 +60,38 @@
 .deleteButtonDisabled {
   background: transparent;
   color: #b44949;
+  pointer-events: none;
+}
+
+.tooltipWrapper {
+  display: inline-flex;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.tooltipWrapper::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-bottom: 6px;
+  padding: 6px 10px;
+  background: var(--text-primary);
+  color: var(--bg);
+  font-size: 11px;
+  line-height: 1.4;
+  white-space: nowrap;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.1s ease, visibility 0.1s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.tooltipWrapper:hover::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 .headerButton {

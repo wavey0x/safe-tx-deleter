@@ -10,14 +10,15 @@ import { normalizeAddress } from "../utils/address";
 import StarButton from "../components/StarButton";
 import EditableLabel from "../components/EditableLabel";
 import Spinner from "../components/Spinner";
+import ChainIcon from "../components/ChainIcon";
 import { RefreshCcw } from "lucide-react";
 import styles from "./HomePage.module.css";
 
 const LOADING_MESSAGES = [
   "Loading Safes...",
-  "This may take a while...",
-  "Fetching from multiple chains...",
   "Rate limits may slow things down...",
+  "Fetching from multiple chains...",
+  "This may take a while...",
 ];
 
 const CyclingText = () => {
@@ -113,6 +114,7 @@ const HomePage = () => {
               return (
                 <div key={chainKey} className={styles.group}>
                   <div className={styles.groupHeader}>
+                    <ChainIcon chainKey={chain.chainKey} size={14} />
                     {chain.displayName}
                   </div>
                   {safes.map((safe) => (
@@ -178,7 +180,10 @@ const HomePage = () => {
 
               return (
                 <div key={chain.chainKey} className={styles.group}>
-                  <div className={styles.groupHeader}>{chain.displayName}</div>
+                  <div className={styles.groupHeader}>
+                    <ChainIcon chainKey={chain.chainKey} size={14} />
+                    {chain.displayName}
+                  </div>
                   {safes.map((safe) => (
                     <div
                       key={safe}
