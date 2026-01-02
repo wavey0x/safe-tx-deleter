@@ -10,7 +10,6 @@ import { normalizeAddress } from "../utils/address";
 import StarButton from "../components/StarButton";
 import EditableLabel from "../components/EditableLabel";
 import Spinner from "../components/Spinner";
-import ChainIcon from "../components/ChainIcon";
 import { RefreshCcw } from "lucide-react";
 import styles from "./HomePage.module.css";
 
@@ -40,6 +39,7 @@ const HomePage = () => {
   const { favorites, toggleFavorite, isFavorite } = useFavorites();
   const { getLabel, setLabel } = useSafeLabels();
   const { addToast } = useToast();
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [ownerSafes, setOwnerSafes] = useState<
@@ -94,6 +94,10 @@ const HomePage = () => {
     }, {});
   }, [favorites]);
 
+  const toggleCollapsed = (key: string) => {
+    setCollapsed((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
+
   return (
     <div>
       <section className="section">
@@ -113,36 +117,47 @@ const HomePage = () => {
               if (!chain) return null;
               return (
                 <div key={chainKey} className={styles.group}>
-                  <div className={styles.groupHeader}>
-                    <ChainIcon chainKey={chain.chainKey} size={14} />
-                    {chain.displayName}
-                  </div>
-                  {safes.map((safe) => (
-                    <div
-                      key={`${chainKey}-${safe}`}
-                      className={styles.card}
-                      onClick={() => handleOpenSafe(chain.chainKey, safe)}
-                    >
-                      <div className={styles.cardRow}>
-                        <EditableLabel
-                          address={safe}
-                          label={getLabel(safe)}
-                          onSave={(label) => setLabel(safe, label)}
-                          externalUrl={getSafeQueueUrl(chain.chainKey, safe)}
-                        />
-                        <StarButton
-                          active
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            toggleFavorite({
-                              chainKey: chain.chainKey,
-                              safeAddress: safe,
-                            });
-                          }}
-                        />
+                  <button
+                    type="button"
+                    className={styles.groupHeaderButton}
+                    onClick={() => toggleCollapsed(`fav-${chainKey}`)}
+                  >
+                    <span
+                      className={`${styles.caret} ${
+                        collapsed[`fav-${chainKey}`] ? styles.caretClosed : ""
+                      }`}
+                      aria-hidden="true"
+                    />
+                    {chain.displayName} ({safes.length})
+                  </button>
+                  {!collapsed[`fav-${chainKey}`] &&
+                    safes.map((safe) => (
+                      <div
+                        key={`${chainKey}-${safe}`}
+                        className={styles.card}
+                        onClick={() => handleOpenSafe(chain.chainKey, safe)}
+                      >
+                        <div className={styles.cardRow}>
+                          <EditableLabel
+                            address={safe}
+                            label={getLabel(safe)}
+                            onSave={(label) => setLabel(safe, label)}
+                            externalUrl={getSafeQueueUrl(chain.chainKey, safe)}
+                            chainIconUrl={chain.logoUrl}
+                          />
+                          <StarButton
+                            active
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleFavorite({
+                                chainKey: chain.chainKey,
+                                safeAddress: safe,
+                              });
+                            }}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
                 </div>
               );
             })}
@@ -180,36 +195,47 @@ const HomePage = () => {
 
               return (
                 <div key={chain.chainKey} className={styles.group}>
-                  <div className={styles.groupHeader}>
-                    <ChainIcon chainKey={chain.chainKey} size={14} />
-                    {chain.displayName}
-                  </div>
-                  {safes.map((safe) => (
-                    <div
-                      key={safe}
-                      className={styles.card}
-                      onClick={() => handleOpenSafe(chain.chainKey, safe)}
-                    >
-                      <div className={styles.cardRow}>
-                        <EditableLabel
-                          address={safe}
-                          label={getLabel(safe)}
-                          onSave={(label) => setLabel(safe, label)}
-                          externalUrl={getSafeQueueUrl(chain.chainKey, safe)}
-                        />
-                        <StarButton
-                          active={isFavorite(chain.chainKey, safe)}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            toggleFavorite({
-                              chainKey: chain.chainKey,
-                              safeAddress: safe,
-                            });
-                          }}
-                        />
+                  <button
+                    type="button"
+                    className={styles.groupHeaderButton}
+                    onClick={() => toggleCollapsed(`owned-${chain.chainKey}`)}
+                  >
+                    <span
+                      className={`${styles.caret} ${
+                        collapsed[`owned-${chain.chainKey}`] ? styles.caretClosed : ""
+                      }`}
+                      aria-hidden="true"
+                    />
+                    {chain.displayName} ({safes.length})
+                  </button>
+                  {!collapsed[`owned-${chain.chainKey}`] &&
+                    safes.map((safe) => (
+                      <div
+                        key={safe}
+                        className={styles.card}
+                        onClick={() => handleOpenSafe(chain.chainKey, safe)}
+                      >
+                        <div className={styles.cardRow}>
+                          <EditableLabel
+                            address={safe}
+                            label={getLabel(safe)}
+                            onSave={(label) => setLabel(safe, label)}
+                            externalUrl={getSafeQueueUrl(chain.chainKey, safe)}
+                            chainIconUrl={chain.logoUrl}
+                          />
+                          <StarButton
+                            active={isFavorite(chain.chainKey, safe)}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleFavorite({
+                                chainKey: chain.chainKey,
+                                safeAddress: safe,
+                              });
+                            }}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
                 </div>
               );
             })}

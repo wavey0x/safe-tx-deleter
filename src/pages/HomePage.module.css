@@ -25,6 +25,35 @@
   color: var(--text-tertiary);
 }
 
+.groupHeaderButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--text-tertiary);
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.caret {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--text-tertiary);
+  transform: rotate(0deg);
+  transition: transform 0.15s ease;
+}
+
+.caretClosed {
+  transform: rotate(-90deg);
+}
+
 .row {
   display: flex;
   align-items: center;
