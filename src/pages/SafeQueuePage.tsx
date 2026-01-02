@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAccount, useSignTypedData, useSwitchChain } from "wagmi";
+import { ArrowLeft } from "lucide-react";
 import {
   fetchQueuedTransactions,
   type MultisigTransaction,
@@ -213,16 +214,7 @@ const SafeQueuePage = () => {
         <div className={styles.headerInfo}>
           <div className={styles.titleRow}>
             <Link to="/" className={styles.backIcon} aria-label="Back">
-              <svg viewBox="0 0 16 16" aria-hidden="true">
-                <path
-                  d="M9.5 3.5L5 8l4.5 4.5M5 8h7"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <ArrowLeft size={16} strokeWidth={1.6} />
             </Link>
             <div className={styles.title}>Queue</div>
           </div>

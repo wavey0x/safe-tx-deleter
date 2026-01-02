@@ -10,6 +10,7 @@ import { normalizeAddress } from "../utils/address";
 import StarButton from "../components/StarButton";
 import EditableLabel from "../components/EditableLabel";
 import Spinner from "../components/Spinner";
+import { RefreshCcw } from "lucide-react";
 import styles from "./HomePage.module.css";
 
 const LOADING_MESSAGES = [
@@ -154,13 +155,18 @@ const HomePage = () => {
         ) : !loaded && !loading ? (
           <div className={styles.loadButtonWrapper}>
             <button type="button" onClick={loadSafes}>
+              <span className={styles.loadIcon} aria-hidden="true">
+                <RefreshCcw size={14} strokeWidth={1.6} />
+              </span>
               Load My Safes
             </button>
           </div>
         ) : loading ? (
-          <div className={styles.loadingWrapper}>
-            <Spinner size={18} />
-            <CyclingText />
+          <div className={styles.loadButtonWrapper}>
+            <div className={styles.loadingInline}>
+              <Spinner size={18} />
+              <CyclingText />
+            </div>
           </div>
         ) : !hasSafes ? (
           <div className="muted">No Safes found for this owner.</div>
@@ -261,7 +267,7 @@ const ManualSearch = ({
         }}
         className={styles.searchInput}
       />
-      <button type="submit">Open queue</button>
+      <button type="submit">Search</button>
       {error ? <div className={styles.error}>{error}</div> : null}
     </form>
   );

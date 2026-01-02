@@ -2,6 +2,7 @@
   display: grid;
   gap: 16px;
   justify-items: start;
+  width: min(760px, 100%);
 }
 
 .group {
@@ -40,6 +41,8 @@
   cursor: pointer;
   transition: box-shadow 0.15s ease, background-color 0.15s ease;
   width: 100%;
+  min-width: 450px;
+  max-width: 760px;
 }
 
 .card:last-child {
@@ -55,19 +58,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 16px;
   overflow: hidden;
 }
 
 .address {
-  word-break: break-all;
   flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cardActions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   flex-shrink: 0;
 }
 
@@ -79,10 +85,10 @@
 
 .searchForm {
   display: grid;
-  grid-template-columns: 160px 1fr auto;
-  gap: 12px;
+  grid-template-columns: 120px 1fr auto;
+  gap: 4px;
   align-items: center;
-  width: min(720px, 100%);
+  width: min(450px, 100%);
 }
 
 .searchInput {
@@ -146,12 +152,27 @@
   justify-content: flex-start;
 }
 
-.loadingWrapper {
-  display: flex;
+.loadButtonWrapper button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loadIcon {
+  display: inline-flex;
+  width: 14px;
+  height: 14px;
+}
+
+.loadIcon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.loadingInline {
+  display: inline-flex;
   align-items: center;
   gap: 10px;
-  max-width: 520px;
-  margin: 0 auto;
 }
 
 .searchWrapper {

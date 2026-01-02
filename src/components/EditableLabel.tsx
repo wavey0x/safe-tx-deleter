@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { ExternalLink, Pencil } from "lucide-react";
 import { shortenAddress } from "../utils/safeLabels";
 import styles from "./EditableLabel.module.css";
 
@@ -96,14 +97,7 @@ const EditableLabel = ({
         onClick={handleEditClick}
         aria-label="Edit name"
       >
-        <svg viewBox="0 0 12 12" className={styles.icon} aria-hidden="true">
-          <path
-            d="M9 1l2 2-7 7H2V8l7-7z"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.2"
-          />
-        </svg>
+        <Pencil size={12} strokeWidth={1.6} />
       </button>
       {externalUrl && (
         <a
@@ -114,14 +108,7 @@ const EditableLabel = ({
           onClick={handleLinkClick}
           aria-label="Open in Safe"
         >
-          <svg viewBox="0 0 12 12" className={styles.icon} aria-hidden="true">
-            <path
-              d="M4 1H1v10h10V8M7 1h4v4M11 1L5 7"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.2"
-            />
-          </svg>
+          <ExternalLink size={12} strokeWidth={1.6} />
         </a>
       )}
       {trailing}
